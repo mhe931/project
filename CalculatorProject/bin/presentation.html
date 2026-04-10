@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDD Presentation - Software Testing Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .slide {
+            display: none;
+        }
+
+        .active-slide {
+            display: flex;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 font-sans h-screen w-screen overflow-hidden flex flex-col">
+
+    <!-- Header Navigation -->
+    <header class="bg-blue-900 text-white p-4 shadow-md flex justify-between items-center z-10 relative">
+        <h1 class="text-xl font-bold">Smart Calculator System - TDD</h1>
+        <div class="space-x-2">
+            <button onclick="prevSlide()"
+                class="px-4 py-2 bg-blue-700 hover:bg-blue-600 rounded transition font-semibold">&larr; Prev</button>
+            <button onclick="nextSlide()"
+                class="px-4 py-2 bg-blue-700 hover:bg-blue-600 rounded transition font-semibold">Next &rarr;</button>
+        </div>
+    </header>
+
+    <!-- Main Presentation Area -->
+    <main class="flex-grow flex items-center justify-center p-8 relative">
+
+        <!-- Slide 1: Project Overview -->
+        <div class="slide active-slide flex-col items-center justify-center w-full max-w-4xl text-center space-y-6"
+            id="slide-1">
+            <h2 class="text-5xl font-extrabold text-blue-900 mb-4">Project Overview</h2>
+            <p class="text-xl text-slate-600 max-w-2xl">
+                Applied Software Testing Makeup Project utilizing the <strong>Smart Calculator System</strong>.
+                Focusing on strict mathematical logic implementation using rigorous automated testing standards.
+            </p>
+            <div class="p-6 bg-white shadow-lg rounded-xl border border-slate-200 w-full mt-6">
+                <h3 class="text-2xl font-bold mb-4 text-blue-700">Core Objectives</h3>
+                <ul class="text-lg text-slate-700 space-y-2 text-left inline-block">
+                    <li>✔️ Secure mathematical operations.</li>
+                    <li>✔️ Predictable runtime error handling (e.g., divide by zero).</li>
+                    <li>✔️ Reliable feature extensions tracking state.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 2: The TDD Workflow -->
+        <div class="slide flex-col items-center justify-center w-full max-w-4xl text-center space-y-6" id="slide-2">
+            <h2 class="text-5xl font-extrabold text-blue-900 mb-4">The TDD Workflow</h2>
+            <div class="grid grid-cols-3 gap-6 w-full mt-8">
+                <div class="p-6 bg-red-100 shadow-md rounded-xl border border-red-300">
+                    <h3 class="text-2xl font-bold text-red-700 mb-2">1. RED</h3>
+                    <p class="text-red-900">Write an initially failing test that dictates specific anticipated
+                        behaviors.</p>
+                </div>
+                <div class="p-6 bg-green-100 shadow-md rounded-xl border border-green-300">
+                    <h3 class="text-2xl font-bold text-green-700 mb-2">2. GREEN</h3>
+                    <p class="text-green-900">Implement minimal necessary production code to make the test pass.</p>
+                </div>
+                <div class="p-6 bg-blue-100 shadow-md rounded-xl border border-blue-300">
+                    <h3 class="text-2xl font-bold text-blue-700 mb-2">3. REFACTOR</h3>
+                    <p class="text-blue-900">Tidying logic ensuring the test metrics continue to yield positive results.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Red Phase -->
+        <div class="slide flex-col items-center justify-center w-full max-w-5xl text-center space-y-6" id="slide-3">
+            <h2 class="text-5xl font-extrabold text-red-600 mb-4">Phase 1: RED</h2>
+            <p class="text-xl text-slate-600">The Power function lacks logic, returning an immediate testing exception.
+            </p>
+            <div class="flex w-full gap-6 mt-4 opacity-95 text-sm h-64 overflow-hidden">
+                <div class="w-1/2 p-2">
+                    <h4 class="font-bold text-slate-800 mb-2">calculator.java</h4>
+                    <pre class="h-full overflow-auto">
+public int calculatePower(int base, int exp) {
+    return 0; // Stub for TDD Red Phase
+}
+                    </pre>
+                </div>
+                <div class="w-1/2 p-2">
+                    <h4 class="font-bold text-slate-800 mb-2">Terminal Output</h4>
+                    <img src="placeholder_screenshot_red.png" alt="[INSERT TERMINAL RUN RED PHASE HERE]"
+                        class="w-full h-full object-cover rounded shadow border border-slate-300 bg-slate-200">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Green Phase -->
+        <div class="slide flex-col items-center justify-center w-full max-w-5xl text-center space-y-6" id="slide-4">
+            <h2 class="text-5xl font-extrabold text-green-600 mb-4">Phase 2: GREEN</h2>
+            <p class="text-xl text-slate-600">Integrating direct implementation math routines to safely conquer
+                expectations.</p>
+            <div class="flex w-full gap-6 mt-4 opacity-95 text-sm h-64 overflow-hidden">
+                <div class="w-1/2 p-2">
+                    <h4 class="font-bold text-slate-800 mb-2">calculator.java</h4>
+                    <pre class="h-full overflow-auto">
+public int calculatePower(int base, int exp) {
+    return (int) Math.pow(base, exp);
+}
+                    </pre>
+                </div>
+                <div class="w-1/2 p-2">
+                    <h4 class="font-bold text-slate-800 mb-2">Terminal Output</h4>
+                    <img src="placeholder_screenshot_green.png" alt="[INSERT TERMINAL RUN GREEN PHASE HERE]"
+                        class="w-full h-full object-cover rounded shadow border border-slate-300 bg-slate-200">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Summary of Results -->
+        <div class="slide flex-col items-center justify-center w-full max-w-4xl text-center space-y-6" id="slide-5">
+            <h2 class="text-5xl font-extrabold text-indigo-900 mb-4">Summary of Results</h2>
+            <div class="p-8 bg-white shadow-xl rounded-2xl border border-indigo-100 max-w-2xl w-full">
+                <ul class="text-xl text-slate-700 space-y-4 text-left">
+                    <li class="flex items-center"><span class="text-green-500 font-bold mr-3 text-2xl">✓</span> Full
+                        Unit Testing Framework configured via JUnit platform standalone.</li>
+                    <li class="flex items-center"><span class="text-green-500 font-bold mr-3 text-2xl">✓</span> Safely
+                        managed critical mathematical boundaries like Division by Zero checking string returns.</li>
+                    <li class="flex items-center"><span class="text-green-500 font-bold mr-3 text-2xl">✓</span>
+                        Red/Green metrics comprehensively managed for optimal TDD delivery validation.</li>
+                </ul>
+            </div>
+            <p class="text-indigo-600 font-bold text-2xl mt-8">Presentation Concluded!</p>
+        </div>
+
+    </main>
+
+    <!-- Slide Indicators -->
+    <footer class="p-4 flex justify-center items-center space-x-2 text-slate-400">
+        <span class="font-semibold text-slate-600">Slide <span id="current-slide-number">1</span> of 5</span>
+    </footer>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 5;
+
+        function updateSlides() {
+            document.querySelectorAll('.slide').forEach((slide, index) => {
+                if (index + 1 === currentSlide) {
+                    slide.classList.add('active-slide');
+                    slide.classList.remove('hidden');
+                } else {
+                    slide.classList.remove('active-slide');
+                    slide.classList.add('hidden');
+                }
+            });
+            document.getElementById('current-slide-number').textContent = currentSlide;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlides();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlides();
+            }
+        }
+
+        // Initialize slides, hidden utility class
+        document.querySelectorAll('.slide').forEach(slide => slide.classList.add('hidden'));
+        updateSlides();
+    </script>
+</body>
+
+</html>
